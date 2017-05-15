@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Friend Finder</title>
+    <title>Survey</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -171,7 +171,106 @@
                 </div>
             </div>
 
+            <button type="button" class="btn btn-success btn-block" id="submit">Submit</button>
+
 
         </form>
+
+        <!-- Modal -->
+        <div class="modal fade" id="friend-modal" role="dialog">
+            <div class="modal-dialog">
+
+            <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">Close</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer">
+            <br>
+            <br>
+            <br>
+        </div>
     </div>
+
+
+    <!-- JavaScript -->
+
+    <script type="text/javascript">
+        
+        $('#submit').on('click', function() {
+            // checking if form is filled out
+            var validEntry;
+            if($('#name').val().trim() === ''){
+                alert('Please enter a name');
+            } else if($('#pic').val().trim() === '') {
+                alert('Please enter a link to photo');
+            } else {
+                // array to hold answers from survey questions
+                var answerArray = [];
+                // loop to push answers to array
+                for (i=1; i<11; i++){
+                    answerArray.push(parseInt($('#quest' + i).val().substring(0,1)));
+                }
+                //object to hold the newly entered info
+                var newFriend = 
+                {
+                    name: $('#name').val().trim(),
+                    photo: $('#pic').val().trim(),
+                    scores: answerArray
+                };
+                var currentURL = window.location.origin;
+
+                // add newly entered info to the array
+                $.post(currentURL + '/api/friends', newFriend, function(data){});
+                // access array of friends to analyze for best match
+                $.ajax({url: currentURL + '/api/friends', method: 'GET'}).done(function(res){
+
+                    var bestFriend;
+                    var currentBest = 100;
+                    var differenceArray = [];
+                    // loop through friends except the one just created
+                    for (i=0; i < res.length - 1; i++) {
+                        // compare values from survey questions and pushed value of the differences to difference array
+                        for (j=0; j<10; j++) {
+                            var currentDifference = newFriend.scores[j] - res[i].scores[j];
+                            differenceArray.push(Math.abs(currentDifference));
+                        }
+                        var difference = differenceArray.reduce(add, 0);
+                        if (difference < currentBest) {
+                            bestFriend = res[i];
+                            currentBest = difference;
+                            differenceArray = [];
+                        } else {
+                            differenceArray = [];
+                        }
+                    }
+
+                    var friendName = '<h4>' + bestFriend.name + '</h4>';
+                    var friendPic = 'img width="300px" src=' + bestFriend.photo + '>';
+                    $('#friend-modal').modal('show');
+                    $('#friend-modal h4').html(friendName);
+                    $('.modal-body').html(friendPic);
+
+                    // clear the entries
+                    $('#survey')[0].reset();
+                });
+            }
+            return false;
+        });
+
+        function add(a, b) {
+            return a+b;
+        };
+
+
+    </script>
 </body>
