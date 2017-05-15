@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Friend Finder</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Take the survey</h1>
+        <form role="form" id="survey">
+            <h2>About you</h2>
+            <div class="form-group">
+                <label for="usr">Name: (Required)</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="pic">URL for Photo: (Required)</label>
+                <input type="text" class="form-control" id="pic">
+                <p>Generic Man: https://phillipbrande.files.wordpress.com/2013/02/generic-man.png</p>
+                <p>Generic Woman: https://oprahzipbradford.files.wordpress.com/2016/04/generic-woman.png</p>
+            </div>
+            <hr>
+            <h2>Rate how strongly you agree with the following statements:</h2>
+
+            <div class="row col-sm-12">
+                <h3>Question 1</h3>
+                <h4>I have a love/hate relationship with JavaScript.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest1">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 2</h3>
+                <h4>Generally, I just follow my instincts when it comes to decision making.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest2">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 3</h3>
+                <h4>I would rather code than go to a party.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest3">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 4</h3>
+                <h4>I find it easy to stay relaxed and focused under pressure.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest4">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 5</h3>
+                <h4>I would rather code than go to a party.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest5">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 6</h3>
+                <h4>When buying beer, I tend to look for craft beers made by local microbreweries.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest6">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 7</h3>
+                <h4>I like sports in general.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest7">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 8</h3>
+                <h4>On weekends/days off, I rarely get out of bed early.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest8">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 9</h3>
+                <h4>I am an active person and enjoy a variety of activities such as running, biking, hiking, yoga, and team sports.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest9">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row col-sm-12">
+                <h3>Question 10</h3>
+                <h4>People can rarely upset me.</h4>
+                <div class="form-group col-sm-3">
+                    <select class="form-control" id="quest10">
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</body>
